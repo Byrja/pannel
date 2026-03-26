@@ -1,20 +1,38 @@
 {
-  "coreHealth": [
-    { "name": "Klava gateway", "state": "online" },
-    { "name": "Iskra gateway", "state": "online" },
-    { "name": "VPN bot", "state": "online" }
+  "services": [
+    {"name":"Клава gateway","state":"ok","text":"онлайн"},
+    {"name":"Искра gateway","state":"ok","text":"онлайн"},
+    {"name":"VPN bot","state":"ok","text":"онлайн"}
   ],
-  "projects": [
-    { "id": "P0-011", "title": "VPN auto-expiry + help", "owner": "claw2", "status": "IN_PROGRESS", "class": "KEEP NOW", "notes": "TEST-FIRST" },
-    { "id": "P1-001", "title": "Subscriptions + renewal", "owner": "claw", "status": "TODO", "class": "KEEP NOW", "notes": "Audit current flow first" },
-    { "id": "P1-003", "title": "Traffic counter", "owner": "claw", "status": "IN_PROGRESS", "class": "KEEP NOW", "notes": "TEST-FIRST" },
-    { "id": "P1-006", "title": "Stars payments", "owner": "claw2", "status": "DONE", "class": "KEEP NOW", "notes": "SBP deferred" },
-    { "id": "P2-003", "title": "Multi-server prep", "owner": "claw2", "status": "IN_PROGRESS", "class": "LATER", "notes": "Phase after panel v1" },
-    { "id": "P2-004", "title": "Crypto fluency", "owner": "zarya+bur", "status": "IN_PROGRESS", "class": "LATER", "notes": "Moved to Zarya track" },
-    { "id": "P1-004", "title": "AI support integration", "owner": "claw2", "status": "TODO", "class": "ARCHIVE", "notes": "Merge duplicate with vpn-ai-support" }
+  "alerts": [
+    "СБП отложено: ждём экономику",
+    "Для VPN задач действует правило TEST-FIRST",
+    "Инцидентов критичного уровня: 0 (последние 24ч)"
   ],
+  "tasks": {
+    "backlog": [
+      {"id":"P1-001","title":"Подписки и продление","meta":"Нужен аудит текущей реализации"},
+      {"id":"OWNER-API-01","title":"Найти резервный API при лимитах Клавы","meta":"Задача владельца"}
+    ],
+    "inProgress": [
+      {"id":"P0-011","title":"Авто-отключение просрочек + /help","meta":"TEST-FIRST"},
+      {"id":"P1-003","title":"Счётчик трафика","meta":"TEST-FIRST"}
+    ],
+    "review": [
+      {"id":"UI-001","title":"Редизайн панели v2","meta":"На твою проверку после выката"}
+    ],
+    "done": [
+      {"id":"P1-006","title":"Оплаты Stars","meta":"DONE"}
+    ]
+  },
   "ownerTasks": [
-    { "title": "Find backup API provider for Klava limit events", "status": "TODO" },
-    { "title": "Decide SBP economics (deferred)", "status": "DEFERRED" }
+    "Проверить UX панели как живой пользователь",
+    "Решить по СБП после проверки маржи",
+    "Подтвердить критерии для VPN dashboard v1"
+  ],
+  "agents": [
+    {"name":"Клава","role":"Tech Lead / Архитектура","status":"онлайн","initials":"К"},
+    {"name":"Искра","role":"Execution / SRE","status":"онлайн","initials":"И"},
+    {"name":"Заря","role":"Product / Аналитика","status":"онлайн","initials":"З"}
   ]
 }

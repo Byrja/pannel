@@ -3,41 +3,53 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pannel v1</title>
+    <title>Bur Panel v1</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <h1>OpenClaw Pannel v1</h1>
-      <p>Портфель, здоровье контуров, приоритеты владельца</p>
+    <div class="bg-glow"></div>
+    <header class="topbar">
+      <div>
+        <h1>Bur Panel</h1>
+        <p>Сервисы · Задачи · Агенты · Алерты</p>
+      </div>
+      <div class="switcher">
+        <button id="view-brief" class="active">Было/Сделаем/Будет</button>
+        <button id="view-list">Буллеты</button>
+      </div>
     </header>
 
-    <main>
-      <section class="card">
-        <h2>Core health</h2>
-        <ul id="health-list"></ul>
+    <main class="grid">
+      <section class="card" id="services-card">
+        <h2>Сервисы</h2>
+        <div id="services" class="service-grid"></div>
       </section>
 
-      <section class="card">
-        <h2>Projects</h2>
-        <div class="legend">
-          <span class="pill keep">KEEP NOW</span>
-          <span class="pill later">LATER</span>
-          <span class="pill archive">ARCHIVE</span>
+      <section class="card" id="alerts-card">
+        <h2>Алерты</h2>
+        <ul id="alerts" class="list"></ul>
+      </section>
+
+      <section class="card wide" id="tasks-card">
+        <div class="row between">
+          <h2>Задачи</h2>
+          <div class="legend">
+            <span class="dot green"></span>ОК
+            <span class="dot yellow"></span>Риск
+            <span class="dot red"></span>Критично
+          </div>
         </div>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th><th>Project</th><th>Owner</th><th>Status</th><th>Class</th><th>Notes</th>
-            </tr>
-          </thead>
-          <tbody id="projects-body"></tbody>
-        </table>
+        <div class="kanban" id="kanban"></div>
       </section>
 
-      <section class="card">
-        <h2>Owner tasks (Bur)</h2>
-        <ul id="owner-tasks"></ul>
+      <section class="card" id="owner-card">
+        <h2>Задачи на тебя</h2>
+        <ul id="ownerTasks" class="list"></ul>
+      </section>
+
+      <section class="card" id="agents-card">
+        <h2>Агенты</h2>
+        <div id="agents" class="agents"></div>
       </section>
     </main>
 

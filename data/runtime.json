@@ -1,0 +1,221 @@
+{
+  "generatedAt": "2026-03-26 09:58 UTC",
+  "projects": [
+    {
+      "id": "P0-000-AGENT_DOWN_ISKRA",
+      "title": "AGENT_DOWN_ISKRA",
+      "owner": "claw",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw"
+    },
+    {
+      "id": "P0-001-ticket-bus-prod-path",
+      "title": "Ticket-Bus prod path + permissions finalization",
+      "owner": "claw",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw"
+    },
+    {
+      "id": "P0-002-claw2-error-playbooks",
+      "title": "Harden error playbooks (402/429/404/unknown model)",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P0-003-claw2-cost-guard",
+      "title": "Cost Guard Policy",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P0-004-claw2-index-hardening",
+      "title": "Hardening make-index + ticket schema validation",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P0-005-claw2-cost-guard-enforcement",
+      "title": "Enforce runtime cost-guard defaults",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P0-006-amneziawg-server-deploy",
+      "title": "Deploy AmneziaWG server under dedicated user awg",
+      "owner": "claw",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw"
+    },
+    {
+      "id": "P0-007-claw-guard",
+      "title": "claw-guard self-watchdog",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P0-008-iskra-guard",
+      "title": "iskra-guard mirror self-watchdog",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P0-009-vpn-bot-logic-v2",
+      "title": "VPN Bot Logic V2: Automated Onboarding & Admin Panel",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P0-010-model-failover-guard",
+      "title": "model-failover-guard (preemptive)",
+      "owner": "claw",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "completedAt": null,
+      "meta": "Приоритет P0, владелец claw"
+    },
+    {
+      "id": "P0-011-vpn-auto-expiry-and-help",
+      "title": "VPN Auto-Expiry Logic + User Instructions",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "IN_PROGRESS",
+      "completedAt": null,
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P0-012-resilience-and-monitoring",
+      "title": "Resilience & Observability Upgrade",
+      "owner": "claw2",
+      "priority": "P0",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P0, владелец claw2"
+    },
+    {
+      "id": "P1-001-vpn-bot-subscriptions",
+      "title": "VPN bot subscriptions + renewal flow",
+      "owner": "claw",
+      "priority": "P1",
+      "status": "TODO",
+      "completedAt": null,
+      "meta": "Приоритет P1, владелец claw"
+    },
+    {
+      "id": "P1-002-nvidia-api-backup-check",
+      "title": "Check NVIDIA API as legal backup provider tokens",
+      "owner": "claw",
+      "priority": "P1",
+      "status": "TODO",
+      "completedAt": null,
+      "meta": "Приоритет P1, владелец claw"
+    },
+    {
+      "id": "P1-003-traffic-counter",
+      "title": "Traffic Counter for Users",
+      "owner": "claw",
+      "priority": "P1",
+      "status": "IN_PROGRESS",
+      "completedAt": null,
+      "meta": "Приоритет P1, владелец claw"
+    },
+    {
+      "id": "P1-003-vpn-bot-ai-support",
+      "title": "VPN Bot AI Support Integration",
+      "owner": "claw2",
+      "priority": "P1",
+      "status": "TODO",
+      "completedAt": null,
+      "meta": "Приоритет P1, владелец claw2"
+    },
+    {
+      "id": "P1-004-ai-support",
+      "title": "AI Support Integration (First Line)",
+      "owner": "claw2",
+      "priority": "P1",
+      "status": "TODO",
+      "completedAt": null,
+      "meta": "Приоритет P1, владелец claw2"
+    },
+    {
+      "id": "P1-005-referral-dashboard",
+      "title": "Referral Dashboard for Users",
+      "owner": "claw",
+      "priority": "P1",
+      "status": "TODO",
+      "completedAt": null,
+      "meta": "Приоритет P1, владелец claw"
+    },
+    {
+      "id": "P1-006-stars-payments",
+      "title": "Implement Telegram Stars Payment Flow",
+      "owner": "claw2",
+      "priority": "P1",
+      "status": "DONE",
+      "completedAt": "2026-03-01 09:21 UTC",
+      "meta": "Приоритет P1, владелец claw2"
+    },
+    {
+      "id": "P2-001-web-dashboard-concept",
+      "title": "Web Command Center Concept",
+      "owner": "claw2",
+      "priority": "P2",
+      "status": "TODO",
+      "completedAt": null,
+      "meta": "Приоритет P2, владелец claw2"
+    },
+    {
+      "id": "P2-002-competitor-analysis",
+      "title": "Competitor Analysis (VPN Bots)",
+      "owner": "claw2",
+      "priority": "P2",
+      "status": "TODO",
+      "completedAt": null,
+      "meta": "Приоритет P2, владелец claw2"
+    },
+    {
+      "id": "P2-003-multi-server-prep",
+      "title": "Multi-Server Architecture Prep",
+      "owner": "claw2",
+      "priority": "P2",
+      "status": "IN_PROGRESS",
+      "completedAt": null,
+      "meta": "Приоритет P2, владелец claw2"
+    },
+    {
+      "id": "P2-004-crypto-fluency",
+      "title": "Crypto Fluency & Market Intelligence",
+      "owner": "claw2",
+      "priority": "P2",
+      "status": "IN_PROGRESS",
+      "completedAt": null,
+      "meta": "Приоритет P2, владелец claw2"
+    }
+  ]
+}

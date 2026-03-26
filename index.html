@@ -11,7 +11,7 @@
     <header class="topbar">
       <div>
         <h1>Bur Panel</h1>
-        <p>Сервисы · Задачи · Агенты · Алерты</p>
+        <p>Сервисы · Задачи · Агенты · Алерты <span id="generatedAt"></span></p>
       </div>
       <div class="switcher">
         <button id="view-brief" class="active">Было/Сделаем/Будет</button>
@@ -44,6 +44,10 @@
 
       <section class="card" id="owner-card">
         <h2>Задачи на тебя</h2>
+        <form id="ownerForm" class="owner-form">
+          <input id="ownerInput" type="text" placeholder="Добавить задачу для себя" />
+          <button type="submit">Добавить</button>
+        </form>
         <ul id="ownerTasks" class="list"></ul>
       </section>
 

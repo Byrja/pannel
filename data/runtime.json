@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-26 09:58 UTC",
+  "generatedAt": "2026-03-26 11:21 UTC",
   "projects": [
     {
       "id": "P0-000-AGENT_DOWN_ISKRA",
@@ -217,5 +217,18 @@
       "completedAt": null,
       "meta": "Приоритет P2, владелец claw2"
     }
-  ]
+  ],
+  "services": {
+    "klavaGateway": "active",
+    "iskraGateway": "unknown",
+    "vpnBot": "active"
+  },
+  "dataStatus": {
+    "projects": "live",
+    "services": "live",
+    "vpnUsers": "pending:PANEL-VPN-001",
+    "vpnTraffic": "pending:PANEL-VPN-002",
+    "referrals": "pending:PANEL-VPN-003",
+    "incidents": "pending:PANEL-VPN-004"
+  }
 }

@@ -8,9 +8,23 @@ function setMode(brief) {
   renderTasks(window.__tasks);
 }
 
-function renderServices(services) {
-  $('services').innerHTML = services
-    .map((s) => `<div class="svc"><div>${s.name}</div><div class="state ${s.state}">${s.text}</div></div>`)
+function normalizeState(v) {
+  if (v === 'active') return { cls: 'ok', text: 'онлайн' };
+  if (v === 'inactive' || v === 'failed') return { cls: 'crit', text: v };
+  return { cls: 'warn', text: v || 'unknown' };
+}
+
+function renderServices(s) {
+  const rows = [
+    ['Клава gateway', s.klavaGateway],
+    ['Искра gateway', s.iskraGateway],
+    ['VPN bot', s.vpnBot]
+  ];
+  $('services').innerHTML = rows
+    .map(([name, st]) => {
+      const n = normalizeState(st);
+      return `<div class="svc"><div>${name}</div><div class="state ${n.cls}">${n.text}</div></div>`;
+    })
     .join('');
 }
 
@@ -76,23 +90,32 @@ function renderAgents(agents) {
     .join('');
 }
 
+function renderDataStatus(ds) {
+  const msg = [];
+  for (const [k, v] of Object.entries(ds || {})) {
+    if (String(v).startsWith('pending:')) msg.push(`${k}: данные будут добавлены в рамках задачи ${v.split(':')[1]}`);
+  }
+  if (msg.length) $('alerts').innerHTML += msg.map((m) => `<li>${m}</li>`).join('');
+}
+
 async function init() {
   const [staticRes, runtimeRes] = await Promise.all([
     fetch('data/projects.json'),
-    fetch('data/runtime.json').catch(() => null)
+    fetch('data/runtime.json')
   ]);
   const base = await staticRes.json();
-  const runtime = runtimeRes && runtimeRes.ok ? await runtimeRes.json() : { projects: [], generatedAt: null };
+  const runtime = await runtimeRes.json();
 
-  renderServices(base.services);
-  renderAlerts(base.alerts);
+  renderServices(runtime.services || {});
+  renderAlerts(base.alerts || []);
+  renderDataStatus(runtime.dataStatus || {});
 
-  window.__tasks = runtime.projects.length ? toBoard(runtime.projects) : base.tasks;
+  window.__tasks = toBoard(runtime.projects || []);
   renderTasks(window.__tasks);
 
   window.__defaultOwnerTasks = base.ownerTasks || [];
   renderOwner();
-  renderAgents(base.agents);
+  renderAgents(base.agents || []);
 
   $('generatedAt').textContent = runtime.generatedAt ? `· Обновлено: ${runtime.generatedAt}` : '';
 

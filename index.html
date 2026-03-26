@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pannel v1</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>OpenClaw Pannel v1</h1>
+      <p>Портфель, здоровье контуров, приоритеты владельца</p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Core health</h2>
+        <ul id="health-list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Projects</h2>
+        <div class="legend">
+          <span class="pill keep">KEEP NOW</span>
+          <span class="pill later">LATER</span>
+          <span class="pill archive">ARCHIVE</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Project</th><th>Owner</th><th>Status</th><th>Class</th><th>Notes</th>
+            </tr>
+          </thead>
+          <tbody id="projects-body"></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Owner tasks (Bur)</h2>
+        <ul id="owner-tasks"></ul>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

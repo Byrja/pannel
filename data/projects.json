@@ -1,0 +1,20 @@
+{
+  "coreHealth": [
+    { "name": "Klava gateway", "state": "online" },
+    { "name": "Iskra gateway", "state": "online" },
+    { "name": "VPN bot", "state": "online" }
+  ],
+  "projects": [
+    { "id": "P0-011", "title": "VPN auto-expiry + help", "owner": "claw2", "status": "IN_PROGRESS", "class": "KEEP NOW", "notes": "TEST-FIRST" },
+    { "id": "P1-001", "title": "Subscriptions + renewal", "owner": "claw", "status": "TODO", "class": "KEEP NOW", "notes": "Audit current flow first" },
+    { "id": "P1-003", "title": "Traffic counter", "owner": "claw", "status": "IN_PROGRESS", "class": "KEEP NOW", "notes": "TEST-FIRST" },
+    { "id": "P1-006", "title": "Stars payments", "owner": "claw2", "status": "DONE", "class": "KEEP NOW", "notes": "SBP deferred" },
+    { "id": "P2-003", "title": "Multi-server prep", "owner": "claw2", "status": "IN_PROGRESS", "class": "LATER", "notes": "Phase after panel v1" },
+    { "id": "P2-004", "title": "Crypto fluency", "owner": "zarya+bur", "status": "IN_PROGRESS", "class": "LATER", "notes": "Moved to Zarya track" },
+    { "id": "P1-004", "title": "AI support integration", "owner": "claw2", "status": "TODO", "class": "ARCHIVE", "notes": "Merge duplicate with vpn-ai-support" }
+  ],
+  "ownerTasks": [
+    { "title": "Find backup API provider for Klava limit events", "status": "TODO" },
+    { "title": "Decide SBP economics (deferred)", "status": "DEFERRED" }
+  ]
+}

@@ -1,144 +1,39 @@
 const $ = (id) => document.getElementById(id);
-let briefMode = true;
 
-function setMode(brief) {
-  briefMode = brief;
-  $('view-brief').classList.toggle('active', brief);
-  $('view-list').classList.toggle('active', !brief);
-  renderTasks(window.__tasks);
+function badge(stage){
+  const map={"новый":"warn","В работе":"ok","Тест":"warn","Готово":"ok","blocked":"crit"};
+  const cls=map[stage]||'warn';
+  return `<span class="state ${cls}">${stage}</span>`;
 }
 
-function normalizeState(v) {
-  if (v === 'active') return { cls: 'ok', text: 'онлайн' };
-  if (v === 'inactive' || v === 'failed') return { cls: 'crit', text: v };
-  return { cls: 'warn', text: v || 'unknown' };
+function card(title, meta, extra=''){
+  return `<div class="item"><div class="title">${title}</div><div class="meta">${meta}</div>${extra}</div>`;
 }
 
-function renderServices(s) {
-  const rows = [
-    ['Клава gateway', s.klavaGateway],
-    ['Искра gateway', s.iskraGateway],
-    ['VPN bot', s.vpnBot]
-  ];
-  $('services').innerHTML = rows
-    .map(([name, st]) => {
-      const n = normalizeState(st);
-      return `<div class="svc"><div>${name}</div><div class="state ${n.cls}">${n.text}</div></div>`;
-    })
-    .join('');
-}
-
-function renderAlerts(alerts) {
-  $('alerts').innerHTML = alerts.map((a) => `<li>${a}</li>`).join('');
-}
-
-function toBoard(projects) {
-  const board = { backlog: [], inProgress: [], review: [], done: [] };
-  for (const p of projects) {
-    const t = { id: p.id, title: p.title, meta: p.completedAt ? `Выполнено: ${p.completedAt}` : p.meta };
-    if (p.status === 'DONE') board.done.push(t);
-    else if (p.status === 'IN_PROGRESS') board.inProgress.push(t);
-    else if (p.status === 'REVIEW') board.review.push(t);
-    else board.backlog.push(t);
-  }
-  return board;
-}
-
-function taskCard(t) {
-  if (briefMode) {
-    return `<div class="task"><div class="id">${t.id}</div><div class="title">${t.title}</div><div class="meta"><b>Было:</b> задача не завершена<br/><b>Что делаем:</b> ${t.meta}<br/><b>Будет:</b> прозрачный статус в панели</div></div>`;
-  }
-  return `<div class="task"><div class="id">${t.id}</div><div class="title">${t.title}</div><div class="meta">• ${t.meta}</div></div>`;
-}
-
-function renderTasks(tasks) {
-  const map = [
-    ['Бэклог', tasks.backlog],
-    ['В работе', tasks.inProgress],
-    ['На проверке', tasks.review],
-    ['Готово', tasks.done]
-  ];
-  $('kanban').innerHTML = map
-    .map(([title, arr]) => `<div class="col"><h3>${title}</h3>${arr.map(taskCard).join('')}</div>`)
-    .join('');
-}
-
-function getOwnerTasks() {
-  const custom = JSON.parse(localStorage.getItem('ownerTasks') || '[]');
-  return [...(window.__defaultOwnerTasks || []), ...custom];
-}
-
-function renderOwner() {
-  const tasks = getOwnerTasks();
-  $('ownerTasks').innerHTML = tasks
-    .map((t, i) => `<li class="task-owner"><span>${t}</span>${i >= (window.__defaultOwnerTasks||[]).length ? `<button data-del="${i-(window.__defaultOwnerTasks||[]).length}">x</button>` : ''}</li>`)
-    .join('');
-  $('ownerTasks').querySelectorAll('button[data-del]').forEach((b) => {
-    b.addEventListener('click', () => {
-      const idx = Number(b.dataset.del);
-      const custom = JSON.parse(localStorage.getItem('ownerTasks') || '[]');
-      custom.splice(idx, 1);
-      localStorage.setItem('ownerTasks', JSON.stringify(custom));
-      renderOwner();
-    });
-  });
-}
-
-function renderAgents(agents) {
-  $('agents').innerHTML = agents
-    .map((a) => `<div class="agent"><div class="avatar">${a.initials}</div><div><div><b>${a.name}</b> · ${a.status}</div><div class="meta">${a.role}</div></div></div>`)
-    .join('');
-}
-
-function renderVpn(vpn) {
-  const s = (vpn && vpn.stats) || {};
-  const cards = [
-    ['Пользователи (всего)', s.usersTotal],
-    ['Активные подписки', s.usersActive],
-    ['Просроченные', s.usersExpired],
-    ['Онлайн (10 мин)', s.onlineRecent10m]
-  ];
-  $('vpnStats').innerHTML = cards
-    .map(([name, val]) => `<div class="svc"><div>${name}</div><div class="state ${val === null ? 'warn' : 'ok'}">${val === null ? 'нет данных' : val}</div></div>`)
-    .join('');
-  $('vpnDataNotes').innerHTML = (vpn && vpn.notes || []).map((n) => `<li>${n}</li>`).join('');
-}
-
-async function init() {
-  const [staticRes, runtimeRes] = await Promise.all([
-    fetch('data/projects.json'),
-    fetch('data/runtime.json')
+async function init(){
+  const [hubRes, rtRes] = await Promise.all([
+    fetch('data/hub.json'),
+    fetch('data/runtime.json').catch(()=>null)
   ]);
-  const base = await staticRes.json();
-  const runtime = await runtimeRes.json();
+  const hub = await hubRes.json();
+  const rt = rtRes && rtRes.ok ? await rtRes.json() : null;
+  $('generatedAt').textContent = rt?.generatedAt ? `· Обновлено: ${rt.generatedAt}` : '';
 
-  renderServices(runtime.services || {});
-  renderAlerts(base.alerts || []);
-  renderVpn(runtime.vpn || {});
+  $('inbox').innerHTML = hub.inbox.map(r=>card(`${r.id} ${badge(r.status)}`, r.text, `<div class="meta">${r.createdAt}</div>`)).join('');
 
-  window.__tasks = toBoard(runtime.projects || []);
-  renderTasks(window.__tasks);
+  $('projects').innerHTML = hub.projects.map(p=>card(
+    `${p.name} ${badge(p.stage)}`,
+    `${p.id} · owner: ${p.owner} · ETA: ${p.eta}`,
+    `<div class="progress"><div class="bar" style="width:${p.progress}%"></div></div><div class="meta">Прогресс: ${p.progress}% · Агенты: ${p.agents.join(', ')} · Результат: ${p.result}</div>`
+  )).join('');
 
-  window.__defaultOwnerTasks = base.ownerTasks || [];
-  renderOwner();
-  renderAgents(base.agents || []);
+  $('agents').innerHTML = hub.agents.map(a=>card(`${a.name} ${badge(a.state==='занята'?'В работе':'новый')}`, a.task)).join('');
 
-  $('generatedAt').textContent = runtime.generatedAt ? `· Обновлено: ${runtime.generatedAt}` : '';
+  $('quality').innerHTML = hub.qualityGate.map(q=>card(`${q.projectId} ${badge(q.status==='в ожидании'?'новый':'Готово')}`, q.check)).join('');
 
-  $('view-brief').addEventListener('click', () => setMode(true));
-  $('view-list').addEventListener('click', () => setMode(false));
-
-  $('ownerForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const input = $('ownerInput');
-    const val = input.value.trim();
-    if (!val) return;
-    const custom = JSON.parse(localStorage.getItem('ownerTasks') || '[]');
-    custom.push(val);
-    localStorage.setItem('ownerTasks', JSON.stringify(custom));
-    input.value = '';
-    renderOwner();
-  });
+  $('releases').innerHTML = hub.releases.length
+    ? hub.releases.map(r=>card(r.projectId, `${r.date} · ${r.note}`)).join('')
+    : card('Пока пусто', 'Релизы появятся после прохождения quality gate');
 }
 
 init();

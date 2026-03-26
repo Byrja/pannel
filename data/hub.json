@@ -1,0 +1,33 @@
+{
+  "inbox": [
+    {
+      "id": "REQ-2026-03-26-001",
+      "text": "Создай бота для магазина",
+      "status": "новый",
+      "createdAt": "2026-03-26 10:20 UTC"
+    }
+  ],
+  "projects": [
+    {
+      "id": "PRJ-STORE-BOT-001",
+      "name": "Бот для магазина",
+      "owner": "Клава",
+      "stage": "В работе",
+      "progress": 35,
+      "eta": "2026-03-27",
+      "result": "—",
+      "agents": ["Клава", "Искра"],
+      "approvalRequired": true
+    }
+  ],
+  "agents": [
+    {"name":"Клава","state":"занята","task":"Архитектура и декомпозиция PRJ-STORE-BOT-001"},
+    {"name":"Искра","state":"занята","task":"Каркас бота и тестовый контур"},
+    {"name":"Заря","state":"готова","task":"Ожидает подключения в panel workflow"}
+  ],
+  "qualityGate": [
+    {"projectId":"PRJ-STORE-BOT-001","check":"Тест-контур пройден","status":"в ожидании"},
+    {"projectId":"PRJ-STORE-BOT-001","check":"Готово к проверке Сашей","status":"в ожидании"}
+  ],
+  "releases": []
+}

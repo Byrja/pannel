@@ -90,12 +90,18 @@ function renderAgents(agents) {
     .join('');
 }
 
-function renderDataStatus(ds) {
-  const msg = [];
-  for (const [k, v] of Object.entries(ds || {})) {
-    if (String(v).startsWith('pending:')) msg.push(`${k}: данные будут добавлены в рамках задачи ${v.split(':')[1]}`);
-  }
-  if (msg.length) $('alerts').innerHTML += msg.map((m) => `<li>${m}</li>`).join('');
+function renderVpn(vpn) {
+  const s = (vpn && vpn.stats) || {};
+  const cards = [
+    ['Пользователи (всего)', s.usersTotal],
+    ['Активные подписки', s.usersActive],
+    ['Просроченные', s.usersExpired],
+    ['Онлайн (10 мин)', s.onlineRecent10m]
+  ];
+  $('vpnStats').innerHTML = cards
+    .map(([name, val]) => `<div class="svc"><div>${name}</div><div class="state ${val === null ? 'warn' : 'ok'}">${val === null ? 'нет данных' : val}</div></div>`)
+    .join('');
+  $('vpnDataNotes').innerHTML = (vpn && vpn.notes || []).map((n) => `<li>${n}</li>`).join('');
 }
 
 async function init() {
@@ -108,7 +114,7 @@ async function init() {
 
   renderServices(runtime.services || {});
   renderAlerts(base.alerts || []);
-  renderDataStatus(runtime.dataStatus || {});
+  renderVpn(runtime.vpn || {});
 
   window.__tasks = toBoard(runtime.projects || []);
   renderTasks(window.__tasks);

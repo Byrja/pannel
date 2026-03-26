@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-import json, datetime, subprocess
+import json, datetime, subprocess, time
 from pathlib import Path
 
 ROOT = Path('/srv/openclaw-bus')
 INDEX = ROOT / 'INDEX.md'
 TICKETS = ROOT / 'tickets'
+PEERS = ROOT / 'vpn-bot' / 'state' / 'peers.json'
 OUT = Path('/srv/openclaw-bus/pannel/data/runtime.json')
 
 
@@ -26,8 +27,10 @@ def user_service_state(user: str, unit: str) -> str:
     return out if out else "unknown"
 
 
-projects = []
-if INDEX.exists():
+def build_projects():
+    projects = []
+    if not INDEX.exists():
+        return projects
     lines = INDEX.read_text(encoding='utf-8', errors='ignore').splitlines()
     for ln in lines:
         if not ln.startswith('|'):
@@ -52,24 +55,58 @@ if INDEX.exists():
             'completedAt': completed_at,
             'meta': f'Приоритет {prio}, владелец {owner}'
         })
+    return projects
 
+
+def build_vpn_stats():
+    now = int(time.time())
+    stats = {
+        'usersTotal': None,
+        'usersActive': None,
+        'usersExpired': None,
+        'onlineRecent10m': None,
+    }
+    notes = []
+    if not PEERS.exists():
+        notes.append('users: данные будут добавлены в рамках задачи PANEL-VPN-001')
+        return stats, notes
+    try:
+        data = json.loads(PEERS.read_text(encoding='utf-8'))
+        if not isinstance(data, dict):
+            notes.append('users: формат peers.json неожиданный, нужна адаптация PANEL-VPN-001')
+            return stats, notes
+        users = list(data.values())
+        stats['usersTotal'] = len(users)
+        active = sum(1 for u in users if isinstance(u, dict) and u.get('status') == 'active')
+        expired = sum(1 for u in users if isinstance(u, dict) and u.get('status') == 'expired')
+        online = sum(1 for u in users if isinstance(u, dict) and isinstance(u.get('last_seen'), int) and now - u.get('last_seen') <= 600)
+        stats['usersActive'] = active
+        stats['usersExpired'] = expired
+        stats['onlineRecent10m'] = online
+    except Exception:
+        notes.append('users: ошибка чтения peers.json, нужно исправление в PANEL-VPN-001')
+
+    notes.append('traffic: данные будут добавлены в рамках задачи PANEL-VPN-002')
+    notes.append('referrals: данные будут добавлены в рамках задачи PANEL-VPN-003')
+    notes.append('incidents: данные будут добавлены в рамках задачи PANEL-VPN-004')
+    return stats, notes
+
+
+projects = build_projects()
 services = {
     "klavaGateway": user_service_state("claw", "openclaw-gateway"),
     "iskraGateway": user_service_state("claw2", "openclaw-gateway"),
     "vpnBot": service_state("vpn-bot.service"),
 }
+vpn_stats, vpn_notes = build_vpn_stats()
 
 runtime = {
     'generatedAt': datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M UTC'),
     'projects': projects,
     'services': services,
-    'dataStatus': {
-        'projects': 'live',
-        'services': 'live',
-        'vpnUsers': 'pending:PANEL-VPN-001',
-        'vpnTraffic': 'pending:PANEL-VPN-002',
-        'referrals': 'pending:PANEL-VPN-003',
-        'incidents': 'pending:PANEL-VPN-004'
+    'vpn': {
+        'stats': vpn_stats,
+        'notes': vpn_notes
     }
 }
 

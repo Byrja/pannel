@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-26 11:21 UTC",
+  "generatedAt": "2026-03-26 11:27 UTC",
   "projects": [
     {
       "id": "P0-000-AGENT_DOWN_ISKRA",
@@ -223,12 +223,17 @@
     "iskraGateway": "unknown",
     "vpnBot": "active"
   },
-  "dataStatus": {
-    "projects": "live",
-    "services": "live",
-    "vpnUsers": "pending:PANEL-VPN-001",
-    "vpnTraffic": "pending:PANEL-VPN-002",
-    "referrals": "pending:PANEL-VPN-003",
-    "incidents": "pending:PANEL-VPN-004"
+  "vpn": {
+    "stats": {
+      "usersTotal": 24,
+      "usersActive": 14,
+      "usersExpired": 10,
+      "onlineRecent10m": 0
+    },
+    "notes": [
+      "traffic: данные будут добавлены в рамках задачи PANEL-VPN-002",
+      "referrals: данные будут добавлены в рамках задачи PANEL-VPN-003",
+      "incidents: данные будут добавлены в рамках задачи PANEL-VPN-004"
+    ]
   }
 }

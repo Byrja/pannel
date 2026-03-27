@@ -18,6 +18,10 @@
     <main class="grid">
       <section class="card" style="grid-column: span 12;">
         <h2>Входящие запросы от тебя</h2>
+        <form id="newRequestForm" class="owner-form">
+          <input id="newRequestInput" type="text" placeholder="Например: собрать телеграм-бота с оплатой и админкой" />
+          <button type="submit">Запустить проект</button>
+        </form>
         <div id="inbox" class="list-cards"></div>
       </section>
 
@@ -39,6 +43,11 @@
       <section class="card" style="grid-column: span 5;">
         <h2>Релизы</h2>
         <div id="releases" class="list-cards"></div>
+      </section>
+
+      <section class="card" style="grid-column: span 12;">
+        <h2>Лента действий</h2>
+        <div id="activity" class="list-cards"></div>
       </section>
     </main>
 

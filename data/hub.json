@@ -1,12 +1,5 @@
 {
-  "inbox": [
-    {
-      "id": "REQ-TEMPLATE-001",
-      "text": "Шаблон запроса: опиши цель проекта, ожидаемый результат и ограничения",
-      "status": "новый",
-      "createdAt": "2026-03-26 11:10 UTC"
-    }
-  ],
+  "inbox": [],
   "projects": [],
   "agents": [
     {"name":"Клава","state":"готова","task":"Ожидает новый проект от Саши"},
@@ -14,5 +7,6 @@
     {"name":"Заря","state":"готова","task":"Ожидает подключение в panel workflow"}
   ],
   "qualityGate": [],
-  "releases": []
+  "releases": [],
+  "activity": []
 }

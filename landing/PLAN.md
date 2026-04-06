@@ -24,7 +24,7 @@ Owner: Klava
 ## Execution steps
 1. ✅ Create landing workspace in existing repo (`pannel/landing`)
 2. ✅ Create this plan file with milestones
-3. ⏳ Build content structure (copy + sections)
+3. ✅ Build content structure (copy + sections)
 4. ⏳ Implement modern UI (HTML/CSS/JS)
 5. ⏳ Connect CTA to Telegram bot link
 6. ⏳ Deploy to `bur-panel.duckdns.org/landing`

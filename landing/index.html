@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css?v=3" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
   </head>
   <body>
     <div class="bg"></div>
@@ -19,19 +19,16 @@
     </header>
 
     <main>
-      <section class="wrap hero card">
+      <section class="wrap card hero center">
         <p class="badge">VPN без лишней боли</p>
         <h1>Подключись к VPN за 2 минуты через Telegram</h1>
-        <p class="sub">Подключим за 2 минуты. Если не заведётся с первого раза — поможем вручную в Telegram.</p>
-        <div class="actions">
-          <a class="btn primary cta-track" data-pos="hero" href="https://t.me/deepbur_byrbot?start=landing_hero" target="_blank" rel="noopener">Подключиться в Telegram</a>
-          <span class="price">40 Stars / 30 дней · СБП 100 ₽ — скоро</span>
-        </div>
         <p class="micro">Запуск за ~2 минуты · если не подключается — поможем вручную в чате</p>
+        <a class="btn primary hero-cta cta-track" data-pos="hero" href="https://t.me/deepbur_byrbot?start=landing_hero" target="_blank" rel="noopener">Подключиться в Telegram</a>
+        <p class="price">40 Stars / 30 дней · СБП 100 ₽ — скоро</p>
       </section>
 
       <section class="wrap card">
-        <h2>Как это работает</h2>
+        <h2 class="center-title">Как это работает</h2>
         <div class="steps">
           <article>
             <span>1</span>
@@ -51,31 +48,23 @@
         </div>
       </section>
 
-      <section class="wrap card pricing">
-        <h2>Тариф</h2>
-        <div class="big">40 Stars / 30 дней</div>
-        <p>СБП 100 ₽ подключим в ближайших обновлениях.</p>
+      <section class="wrap card tariff center">
+        <h2 class="center-title">Тариф</h2>
+        <div class="tariff-row">
+          <div class="pill active">40 Stars / 30 дней</div>
+          <div class="pill disabled">СБП 100 ₽ / 30 дней</div>
+        </div>
+        <div class="soon">скоро</div>
       </section>
 
-      <section class="wrap grid2">
-        <article class="card">
-          <h2>Почему выбирают нас</h2>
-          <ul>
-            <li>Простой старт без тех-головной боли</li>
-            <li>Поддержка, если что-то не завелось</li>
-            <li>Понятная админка и прозрачные сроки подписки</li>
-            <li>Рефералька с бонусом +14 дней</li>
-          </ul>
-        </article>
-
-        <article class="card faq">
-          <h2>FAQ</h2>
-          <p><b>Сложно настроить?</b><br/>Нет. Открываешь бота и идёшь по шагам 1-2-3.</p>
-          <p><b>Если не подключается?</b><br/>Пишешь в помощь — разбираем вручную и доводим до рабочего состояния.</p>
-          <p><b>На iPhone VPN выключается сам</b><br/>Обычно это старый/битый профиль. Поможем переимпортировать правильно.</p>
-          <p><b>Скорость низкая</b><br/>Дадим другой профиль/маршрут и проверим вместе в чате.</p>
-          <p><b>Как оплатить?</b><br/>Сейчас: 40 Stars за 30 дней. СБП 100 ₽ добавим скоро.</p>
-        </article>
+      <section class="wrap card why">
+        <h2 class="center-title">Почему выбирают нас</h2>
+        <div class="why-grid">
+          <div>Простой старт без тех-головной боли</div>
+          <div>Поддержка, если что-то не завелось</div>
+          <div>Рефералка с бонусом +14 дней</div>
+          <div>Понятная админка и прозрачные сроки подписки</div>
+        </div>
       </section>
 
       <section class="wrap card final">

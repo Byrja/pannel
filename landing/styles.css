@@ -7,7 +7,8 @@ body{margin:0;font-family:Manrope,Inter,system-ui,-apple-system,Segoe UI,Arial,s
 .logo,h1,h2,h3,h4{font-family:Inter,Manrope,system-ui,sans-serif}
 .logo{font-weight:800;letter-spacing:.2px}
 .card{background:linear-gradient(160deg,#14203dcc,#0f1933cc);border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:0 10px 30px rgba(5,10,24,.35)}
-main section{margin-top:26px}
+main section{margin-top:34px}
+main section:first-child{margin-top:20px}
 .center{text-align:center}.center-title{text-align:center;margin-bottom:16px}
 .badge{display:inline-block;font-size:12px;color:#d2dcff;background:#1a2750;padding:7px 11px;border-radius:999px;border:1px solid #36539b}
 .hero h1{font-size:clamp(34px,5vw,58px);line-height:1.08;margin:16px auto 12px;max-width:16ch}

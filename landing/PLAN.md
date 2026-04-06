@@ -28,7 +28,7 @@ Owner: Klava
 4. ✅ Implement modern UI (HTML/CSS/JS)
 5. ✅ Connect CTA to Telegram bot link
 6. ✅ Deploy to `bur-panel.duckdns.org/landing`
-7. ⏳ QA checklist (mobile/desktop/perf/basic SEO)
+7. ✅ QA checklist (mobile/desktop/perf/basic SEO)
 8. ⏳ Final review with Sasha
 
 ## Section structure (v1)

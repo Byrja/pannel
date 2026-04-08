@@ -6,6 +6,8 @@ URL: https://bur-panel.duckdns.org/landing
 ## Included
 - Modern RU landing (hero, trust block, steps, pricing, FAQ, final CTA)
 - Mobile sticky CTA
+- Copy lock v2 synced (`CONTENT_LOCK_V2.md`)
+- Accessibility pass (CTA aria-labels + focus-visible states)
 - CTA source markers via Telegram `start` params:
   - `landing_nav`
   - `landing_hero`

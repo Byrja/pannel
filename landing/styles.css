@@ -16,6 +16,7 @@ main section:first-child{margin-top:20px}
 .price{color:#d5dffc;font-size:16px;margin-top:12px;font-weight:700}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:14px;text-decoration:none;font-weight:700;border:1px solid var(--line);color:var(--txt);transition:transform .18s ease,box-shadow .18s ease}
 .btn:hover{transform:translateY(-1px)}
+.btn:focus-visible,.sticky-cta:focus-visible{outline:3px solid #9ed6ff;outline-offset:3px;box-shadow:0 0 0 2px #0b1020}
 .btn.primary{background:linear-gradient(135deg,var(--acc),var(--acc2));color:#071127;border:0;box-shadow:0 12px 28px #2e83ff57}
 .btn.ghost{background:#132146;padding:9px 13px;font-size:13px;opacity:.86}
 .hero-cta{padding:16px 30px;font-size:30px;border-radius:20px}
@@ -45,3 +46,9 @@ main section:first-child{margin-top:20px}
   .micro{font-size:15px}
 }
 @media (max-width:740px){.sticky-cta{display:block}}
+@media (max-width:390px){
+  .card{padding:22px}
+  .hero h1{font-size:30px}
+  .hero-cta{font-size:19px;padding:12px 18px}
+  .btn.ghost{font-size:12px;padding:8px 10px}
+}

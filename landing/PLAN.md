@@ -1,6 +1,6 @@
 # VPN Landing Plan (modern)
 
-Status: IN_PROGRESS
+Status: DONE
 Owner: Klava
 
 ## Goal
@@ -29,7 +29,7 @@ Owner: Klava
 5. ✅ Connect CTA to Telegram bot link
 6. ✅ Deploy to `bur-panel.duckdns.org/landing`
 7. ✅ QA checklist (mobile/desktop/perf/basic SEO)
-8. ⏳ Final review with Sasha
+8. ✅ Final review with Sasha
 
 ## Section structure (v1)
 - Hero (offer + CTA)
